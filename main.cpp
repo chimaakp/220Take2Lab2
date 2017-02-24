@@ -47,6 +47,7 @@ int main() {
 //Problem 1:This Function takes two values. If the values are in order
 //True is returned. If they are not, false is returned and the values are 
 //swapped so that they are now in order
+//Call by Pointer
 bool order1(int *x, int *y){
     if(*x>*y){//ensures first parameter is smaller
         int tmp = *x;
@@ -58,7 +59,8 @@ bool order1(int *x, int *y){
         return true;
     } 
 }
-
+//Problem 2: This function is the same as problem 1 except it uses
+//Call by Reference
 bool order2(int &x, int &y){
     if(x>y){
         int tmp=x;
