@@ -91,8 +91,9 @@ void ArrayFill(int a[],int size){
 //Once the array has been printed, endl is used to flush  buffer
 void ArrayPrint(int a[], int size){
     for(int i =0; i<size;i++, cout<<", "){
-        cout<<a[i];
+        cout<<a[i]<<" "<<i;
     }
+
     cout<<endl;
 }
 //void Swap(int &x, int &y){
