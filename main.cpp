@@ -44,7 +44,9 @@ int main() {
     int a[]={3,5,7,3,7,9,9};
     int 
 }
-
+//Problem 1:This Function takes two values. If the values are in order
+//True is returned. If they are not, false is returned and the values are 
+//swapped so that they are now in order
 bool order1(int *x, int *y){
     if(*x>*y){//ensures first parameter is smaller
         int tmp = *x;
