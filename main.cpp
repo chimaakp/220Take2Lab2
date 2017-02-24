@@ -41,8 +41,10 @@ int main() {
     //cout<<p1a;
     //order2(p1a,p1b);
     //cout<<p1a;
-    //int a[20];
-    //ArrayFill(a,20);
+    int size=20;
+    int a[size];
+    ArrayFill(a,size);
+    ArrayPrint(a,size);
 }
 //Working
 //Problem 1:This Function takes two values. If the values are in order
@@ -84,13 +86,15 @@ void ArrayFill(int a[],int size){
     }
     return;    
 }
-//
-//void ArrayPrint(int a[], int size){
-//    for(int i =0; i<size;i++){
-//        cout<<a[i]<<", ";
-//    }
-//    cout<<endl;
-//}
+//Problem 4:This function, takes an array and an int(size of array)
+//and prints the values within the array seperated by commas.
+//Once the array has been printed, endl is used to flush  buffer
+void ArrayPrint(int a[], int size){
+    for(int i =0; i<size;i++, cout<<", "){
+        cout<<a[i];
+    }
+    cout<<endl;
+}
 //void Swap(int &x, int &y){
 //    int *tmp;
 //    tmp=x;
