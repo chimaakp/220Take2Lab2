@@ -27,7 +27,7 @@ bool order2(int &x, int &y);
 void ArrayFill(int a[], int size);
 void ArrayPrint(int a[],int size);
 void MinFind(int a[], int size, int &min, int &index);
-void MinRec(int a[], int size, int min, int index, int current);
+void MinRec(int a[], int size, int &min, int &index, int current);
 int ArraySum(int *a, int size);
 bool isPalla(int *x, int length);
 bool isPallaRec(int *x, int length);
@@ -46,8 +46,9 @@ int main() {
     ArrayFill(a,size);
     ArrayPrint(a,size);
     int min;
-    int mindex;
-    MinFind(a,size,min,mindex);
+    int mindex=0;
+    //MinFind(a,size,min,mindex);
+    MinRec(a,size,min,mindex,1);//mindex &curind must be 0
     cout<<"Min: "<<min<<" Mindex: "<<mindex<<endl;
 }
 //Working
@@ -125,18 +126,20 @@ void MinFind(int a[], int size, int &min, int &index){
     cout<<"The smallest value in this array is "<<min<<" which can be found at index "<<index<<endl;
     return;    
 }
-//
-//void MinRec(int a[], int size, int min, int index, int current){
-//    if(current>=(size-1)){
-//        cout<<"The smallest value in this array is "<<min<<" which can be found at index "<<index<<endl;
-//        return; 
-//    }
-//    if(a[index]>a[current]){
-//        min=a[current];
-//        index=current;                
-//    }
-//    MinRec(a,size,min,index,current+1);
-//}
+//Problem 6: This function is the same as function 5, except it is recursive
+//there is also a new variable curind(current index) which keeps track
+//of where in the array we are at the moment
+void MinRec(int a[], int size, int &min, int &index, int curind){
+    if(curind>=(size-1)){
+        cout<<"The smallest value in this array is "<<min<<" which can be found at index "<<index<<endl;
+        return; 
+    }
+    if(a[index]>a[curind]){
+        min=a[curind];
+        index=curind;                
+    }
+    MinRec(a,size,min,index,curind+1);
+}
 //
 //void Sort(){
 //    int min;
