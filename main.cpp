@@ -110,7 +110,8 @@ void ArrayPrint(int a[], int size){
 //    tmp=x;
 //    x=y;
 //    y=tmp;
-//}
+
+//Working
 //Problem 5: This function takes an array the size of the array
 //and 2 int variables, and then finds the smallest value and its index using
 //using call by reference
@@ -126,6 +127,7 @@ void MinFind(int a[], int size, int &min, int &index){
     cout<<"The smallest value in this array is "<<min<<" which can be found at index "<<index<<endl;
     return;    
 }
+//Working
 //Problem 6: This function is the same as function 5, except it is recursive
 //there is also a new variable curind(current index) which keeps track
 //of where in the array we are at the moment
