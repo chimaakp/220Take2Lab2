@@ -90,9 +90,11 @@ void ArrayFill(int a[],int size){
 //and prints the values within the array seperated by commas.
 //Once the array has been printed, endl is used to flush  buffer
 void ArrayPrint(int a[], int size){
-    for(int i =0; i<size;i++, cout<<", "){
-        cout<<a[i]<<" "<<i;
+    for(int i =0; i<size-1;i++){
+        cout<<a[i];
+        cout<<", ";
     }
+    cout<<a[size-1];
 
     cout<<endl;
 }
