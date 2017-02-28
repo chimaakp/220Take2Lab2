@@ -28,7 +28,8 @@ void ArrayFill(int a[], int size);
 void ArrayPrint(int a[],int size);
 void MinFind(int a[], int size, int &min, int &index);
 void MinRec(int a[], int size, int &min, int &index, int current);
-int ArraySum(int *a, int size);
+int ArraySum(int &a, int size);
+int SmallestSeq(int a[],int length);
 bool isPalla(int *x, int length);
 bool isPallaRec(int *x, int length);
 bool isPosPall(int *a, int larr, int lpall,int &x);
@@ -51,6 +52,7 @@ int main() {
     //MinRec(a,size,min,mindex,1);//mindex &curind must be 0
     //cout<<"Min: "<<min<<" Mindex: "<<mindex<<endl;
     //ArraySum(a,20);
+    //SmallestSeq(a,size);
 }
 //Working
 //Problem 1:This Function takes two values. If the values are in order
@@ -156,9 +158,9 @@ void MinRec(int a[], int size, int &min, int &index, int curind){
 //    }
 //}
 //Working
-//Problem 7a:This function takes an adress of an array
+//Problem 7a:This function takes an address of an array
 //and its size and returns the sum of all values within
-int ArraySum(int *a, int size){
+int ArraySum(int &a, int size){
     int sum=0;
     for(int i =0; i<size;i++){
         sum=sum+a[i];
@@ -166,6 +168,23 @@ int ArraySum(int *a, int size){
     cout<<sum;
     return sum;
 }
+
+//int SmallestSeq(int a[],int length){
+//    int x=rand()%5 +3;
+//    cout<<"X: "<<x<<endl;
+//    int minsum=10000;
+//    int index=0;
+//    for(int i=0; i<length-x;i++){
+//        cout<<ArraySum(&a[i],x)<<endl;
+////        if(ArraySum(&a[i],x)<=minsum){
+////            minsum=ArraySum(&a[i],x);
+////            index=i;
+////        }
+//    }
+//    cout<<index;
+//    return index;
+//    
+//}
 //
 //bool isPalla(int *a,int length){
 //    int b[length/2];
