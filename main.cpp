@@ -26,7 +26,7 @@ bool order1(int *x, int *y);
 bool order2(int &x, int &y);
 void ArrayFill(int a[], int size);
 void ArrayPrint(int a[],int size);
-void MinFind(int a[], int size, int min, int index);
+void MinFind(int a[], int size, int &min, int &index);
 void MinRec(int a[], int size, int min, int index, int current);
 int ArraySum(int *a, int size);
 bool isPalla(int *x, int length);
@@ -45,6 +45,10 @@ int main() {
     int a[size];
     ArrayFill(a,size);
     ArrayPrint(a,size);
+    int min;
+    int mindex;
+    MinFind(a,size,min,mindex);
+    cout<<"Min: "<<min<<" Mindex: "<<mindex<<endl;
 }
 //Working
 //Problem 1:This Function takes two values. If the values are in order
@@ -86,6 +90,7 @@ void ArrayFill(int a[],int size){
     }
     return;    
 }
+//Working
 //Problem 4:This function, takes an array and an int(size of array)
 //and prints the values within the array seperated by commas.
 //Once the array has been printed, endl is used to flush  buffer
@@ -98,23 +103,28 @@ void ArrayPrint(int a[], int size){
 
     cout<<endl;
 }
+//Helper Function
 //void Swap(int &x, int &y){
 //    int *tmp;
 //    tmp=x;
 //    x=y;
 //    y=tmp;
 //}
-//void MinFind(int a[], int size, int &min, int &index){
-//    min=a[0];
-//    for(int i=1;i<size;i++){
-//        if(a[i]<min){
-//            min=a[i];
-//            index=i;
-//        }        
-//    }
-//    cout<<"The smallest value in this array is "<<min<<" which can be found at index "<<index<<endl;
-//    return;    
-//}
+//Problem 5: This function takes an array the size of the array
+//and 2 int variables, and then finds the smallest value and its index using
+//using call by reference
+//smallest value and its index 
+void MinFind(int a[], int size, int &min, int &index){
+    min=a[0];
+    for(int i=1;i<size;i++){
+        if(a[i]<min){
+            min=a[i];
+            index=i;
+        }        
+    }
+    cout<<"The smallest value in this array is "<<min<<" which can be found at index "<<index<<endl;
+    return;    
+}
 //
 //void MinRec(int a[], int size, int min, int index, int current){
 //    if(current>=(size-1)){
