@@ -45,11 +45,12 @@ int main() {
     int a[size];
     ArrayFill(a,size);
     ArrayPrint(a,size);
-    int min;
-    int mindex=0;
+    //int min=0;
+    //int mindex=0;
     //MinFind(a,size,min,mindex);
-    MinRec(a,size,min,mindex,1);//mindex &curind must be 0
-    cout<<"Min: "<<min<<" Mindex: "<<mindex<<endl;
+    //MinRec(a,size,min,mindex,1);//mindex &curind must be 0
+    //cout<<"Min: "<<min<<" Mindex: "<<mindex<<endl;
+    //ArraySum(a,20);
 }
 //Working
 //Problem 1:This Function takes two values. If the values are in order
@@ -142,6 +143,7 @@ void MinRec(int a[], int size, int &min, int &index, int curind){
     }
     MinRec(a,size,min,index,curind+1);
 }
+
 //
 //void Sort(){
 //    int min;
@@ -153,14 +155,17 @@ void MinRec(int a[], int size, int &min, int &index, int curind){
 //    sortedlength++;
 //    }
 //}
-//
-//int ArraySum(int *a, int size){
-//    int sum;
-//    for(int i =0; i<size;i++){
-//        sum=sum+a[i];
-//    }
-//    return sum;
-//}
+//Working
+//Problem 7a:This function takes an adress of an array
+//and its size and returns the sum of all values within
+int ArraySum(int *a, int size){
+    int sum=0;
+    for(int i =0; i<size;i++){
+        sum=sum+a[i];
+    }
+    cout<<sum;
+    return sum;
+}
 //
 //bool isPalla(int *a,int length){
 //    int b[length/2];
