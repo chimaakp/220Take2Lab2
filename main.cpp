@@ -28,7 +28,7 @@ void ArrayFill(int a[], int size);
 void ArrayPrint(int a[],int size);
 void MinFind(int a[], int size, int &min, int &index);
 void MinRec(int a[], int size, int &min, int &index, int current);
-int ArraySum(int &x, int size);
+int ArraySum(int* x, int size);
 int SmallestSeq(int a[],int length);
 void SmallestSort(int a[], int size);
 void Swap(int &x, int &y);
@@ -44,23 +44,26 @@ int main() {
     //cout<<p1a;
     //order2(p1a,p1b);
     //cout<<p1a;
-    //int size=20;
-    //int a[size];
-    //ArrayFill(a,size);
-    //ArrayPrint(a,size);
+    int size=20;
+    int a[size];
+    ArrayFill(a,size);
+    ArrayPrint(a,size);
     //cout<<a;
     //int min=0;
     //int mindex=0;
     //MinFind(a,size,min,mindex);
     //MinRec(a,size,min,mindex,1);//mindex &curind must be 0
     //cout<<"Min: "<<min<<" Mindex: "<<mindex<<endl;
-    //ArraySum(a,20);
+    //ArraySum(&a[3],5);
     //SmallestSeq(a,size);
     //SmallestSort(a,size);
     //ArrayPrint(a,size);
     int b[]={2,6,3,3,7,7,3,3,6,2};
     int length=10;
-    cout<<isPallaRec(b,length);
+    //cout<<isPallaRec(b,length);
+    int palint=0;
+    isPosPall(&b[0],length,2,palint);
+    cout<<endl<<palint;
 }
 //Working
 //Problem 1:This Function takes two values. If the values are in order
@@ -160,35 +163,39 @@ void MinRec(int a[], int size, int &min, int &index, int curind){
 //    sortedlength++;
 //    }
 //}
-//HELP!!!!
+//Working
 //Problem 7a:This function takes an address of an array
 //and its size and returns the sum of all values within
-//int ArraySum(int &a, int size){
-//    int sum=0;
-//    int *p=a;
-//    for(int i =0; i<size;i++){
-//        //sum=sum+&a[i];
-//    }
-//    cout<<sum;
-//    return sum;
-//}
-//HELP!!!!!
-//int SmallestSeq(int a[],int length){
-//    int x=rand()%5 +3;
-//    cout<<"X: "<<x<<endl;
-//    int minsum=10000;
-//    int index=0;
-//    for(int i=0; i<length-x;i++){
-//        cout<<ArraySum(&a[i],x)<<endl;
-////        if(ArraySum(&a[i],x)<=minsum){
-////            minsum=ArraySum(&a[i],x);
-////            index=i;
-////        }
-//    }
-//    cout<<index;
-//    return index;
-//    
-//}
+int ArraySum(int* a, int size){
+    int sum=0;
+    for(int i =0; i<size;i++){
+        sum=sum+a[i];
+    }
+    //cout<<sum<<endl;
+    return sum;
+}
+//Working
+//Problem 7b: An array and its length are passed into this function
+//a random number between 3 and 7 is generated. This number serves as the window
+//The purpose is to find the the smallest sequence of numbers of size window within the array
+//the index of the first value of the smallest sequence is returned
+int SmallestSeq(int a[],int length){
+    int x=rand()%5 +3;
+    cout<<"X: "<<x<<endl;
+    int minsum=10000;
+    int index=0;
+    for(int i=0; i<=length-x;i++){
+        //cout<<i<<endl;
+        ArraySum(&a[i],x);
+        if(ArraySum(&a[i],x)<=minsum){
+            minsum=ArraySum(&a[i],x);
+            index=i;
+        }
+    }
+    cout<<index<<endl;
+    return index;
+    
+}
 //Working
 //Problem 8: This function takes 2 inputs, an array and its size
 //The function sorts the array by placing the smallest value 
@@ -242,18 +249,22 @@ bool isPallaRec(int a[],int length){
     isPallaRec(&a[1], length-2);
     
 }
-//
-//bool isPosPall(int *a, int larr, int lpall,int &x){
-//    bool pall=false;
-//    for(int i=0; i<(larr-lpall);i++){
-//        if(isPalla(&a[i],lpall ==1)){
-//            x=a[i];           
-//            pall=true;
-//        }
-//    }
-//    return pall;
-//    
-//}
+//Problem 11:This function takes the address of the first value 
+//of an array, the size of the array, a window,
+//and a third value which will hold the index of any paladrones within the 
+//array.This function tries to find a paldrone of size window 
+//within the array passed in and returns true if one is found
+bool isPosPall(int *a, int larr, int lpall,int &x){
+    bool pall=false;
+    for(int i=0; i<(larr-lpall);i++){
+        if(isPalla(&a[i],lpall)){
+            x=a[i];           
+            pall=true;
+        }
+    }
+    return pall;
+    
+}
 //
 //bool isFinPalla(int *a, int larr,int &x, int &y){
 //    if(larr<=3){
