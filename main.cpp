@@ -32,7 +32,7 @@ int ArraySum(int &x, int size);
 int SmallestSeq(int a[],int length);
 void SmallestSort(int a[], int size);
 void Swap(int &x, int &y);
-bool isPalla(int *x, int length);
+bool isPalla(int x[], int length);
 bool isPallaRec(int *x, int length);
 bool isPosPall(int *a, int larr, int lpall,int &x);
 
@@ -44,10 +44,10 @@ int main() {
     //cout<<p1a;
     //order2(p1a,p1b);
     //cout<<p1a;
-    int size=20;
-    int a[size];
-    ArrayFill(a,size);
-    ArrayPrint(a,size);
+    //int size=20;
+    //int a[size];
+    //ArrayFill(a,size);
+    //ArrayPrint(a,size);
     //cout<<a;
     //int min=0;
     //int mindex=0;
@@ -56,8 +56,11 @@ int main() {
     //cout<<"Min: "<<min<<" Mindex: "<<mindex<<endl;
     //ArraySum(a,20);
     //SmallestSeq(a,size);
-    SmallestSort(a,size);
-    ArrayPrint(a,size);
+    //SmallestSort(a,size);
+    //ArrayPrint(a,size);
+    int b[]={2,6,3,3,7,7,3,3,6,2};
+    int length=10;
+    cout<<isPallaRec(b,length);
 }
 //Working
 //Problem 1:This Function takes two values. If the values are in order
@@ -206,38 +209,39 @@ void SmallestSort(int a[], int size){
     SmallestSort(newarr,size-1);
     
 }
-
-//bool isPalla(int *a,int length){
-//    int b[length/2];
-//    int c[length/2];
-//    for(int i=0;i<length/2;i++){
-//        b[i]=a[i];
-//        c[i]=a[length-i];
-//    }
-//    if(b==c){
-//        return true;
-//    }
-//    else{
-//        return false;
-//    } 
-//}
-//bool isPalla(int &a, int window){
-//    if(even){
-//        
-//    }
-//    if(odd){
-//}
-//
-//bool isPallaRec(int *a,int length){
-//    if(a[0]!=a[length]){
-//        return false;
-//    }
-//    if(length==0){
-//        return true;
-//    }
-//    isPallaRec(&a[1], length-2);
-//    
-//}
+//Working
+//Problem 9:This function takes the address of a value in an array
+//and the size of the array. This function checks to see if the array is a paladrone
+bool isPalla(int a[],int length){
+    int b[length/2];
+    int c[length/2];
+    bool tf=false;
+    for(int i=0;i<length/2;i++){
+        if(a[i]==a[length-i-1]){
+            tf=true;
+        }
+        else{
+            tf=false;
+            break;
+        }
+    }
+    cout<<tf;
+    return tf;
+ 
+}
+//Working
+//Problem 10:This function is the same as problem 9
+//except it is recursive
+bool isPallaRec(int a[],int length){
+    if(a[0]!=a[length-1]){
+        return false;
+    }
+    if(length==0){
+        return true;
+    }
+    isPallaRec(&a[1], length-2);
+    
+}
 //
 //bool isPosPall(int *a, int larr, int lpall,int &x){
 //    bool pall=false;
