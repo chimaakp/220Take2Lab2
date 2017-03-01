@@ -28,8 +28,10 @@ void ArrayFill(int a[], int size);
 void ArrayPrint(int a[],int size);
 void MinFind(int a[], int size, int &min, int &index);
 void MinRec(int a[], int size, int &min, int &index, int current);
-int ArraySum(int &a, int size);
+int ArraySum(int &x, int size);
 int SmallestSeq(int a[],int length);
+void SmallestSort(int a[], int size);
+void Swap(int &x, int &y);
 bool isPalla(int *x, int length);
 bool isPallaRec(int *x, int length);
 bool isPosPall(int *a, int larr, int lpall,int &x);
@@ -46,6 +48,7 @@ int main() {
     int a[size];
     ArrayFill(a,size);
     ArrayPrint(a,size);
+    //cout<<a;
     //int min=0;
     //int mindex=0;
     //MinFind(a,size,min,mindex);
@@ -53,6 +56,8 @@ int main() {
     //cout<<"Min: "<<min<<" Mindex: "<<mindex<<endl;
     //ArraySum(a,20);
     //SmallestSeq(a,size);
+    SmallestSort(a,size);
+    ArrayPrint(a,size);
 }
 //Working
 //Problem 1:This Function takes two values. If the values are in order
@@ -107,12 +112,7 @@ void ArrayPrint(int a[], int size){
 
     cout<<endl;
 }
-//Helper Function
-//void Swap(int &x, int &y){
-//    int *tmp;
-//    tmp=x;
-//    x=y;
-//    y=tmp;
+
 
 //Working
 //Problem 5: This function takes an array the size of the array
@@ -157,18 +157,19 @@ void MinRec(int a[], int size, int &min, int &index, int curind){
 //    sortedlength++;
 //    }
 //}
-//Working
+//HELP!!!!
 //Problem 7a:This function takes an address of an array
 //and its size and returns the sum of all values within
-int ArraySum(int &a, int size){
-    int sum=0;
-    for(int i =0; i<size;i++){
-        sum=sum+a[i];
-    }
-    cout<<sum;
-    return sum;
-}
-
+//int ArraySum(int &a, int size){
+//    int sum=0;
+//    int *p=a;
+//    for(int i =0; i<size;i++){
+//        //sum=sum+&a[i];
+//    }
+//    cout<<sum;
+//    return sum;
+//}
+//HELP!!!!!
 //int SmallestSeq(int a[],int length){
 //    int x=rand()%5 +3;
 //    cout<<"X: "<<x<<endl;
@@ -185,7 +186,27 @@ int ArraySum(int &a, int size){
 //    return index;
 //    
 //}
-//
+//Working
+//Problem 8: This function takes 2 inputs, an array and its size
+//The function sorts the array by placing the smallest value 
+//at the begining and then changing the index
+void SmallestSort(int a[], int size){
+    if(size <=2){
+        return;
+    }
+    int min=0;
+    int mindex=0;
+    MinFind(a,size,min, mindex);
+    if(min<a[0]){
+            a[mindex]=a[0];
+            order2(a[0],min);
+    }
+    //ArrayPrint(a,size);
+    int *newarr=&a[1];
+    SmallestSort(newarr,size-1);
+    
+}
+
 //bool isPalla(int *a,int length){
 //    int b[length/2];
 //    int c[length/2];
